@@ -299,12 +299,29 @@ namespace LaboFinal_A22
         // afficherMenuIntro
         //
         // affiche l'intro et le menu du début, ensuite retourne le choix de l'utilisateur : 1 pour jouer, 2 pour quitter
+        public int afficherMenuIntro()
+        {
+            int choixUtilisateur = 0;
+
+            Console.WriteLine("Bienvenue dans le jeu wannabe Zork. \nZork a été ressucité! Tous les aventuriers sont sollicités pour débarasser Azerim de cette menace!")
+            Console.WriteLine("Que voulez-vous faire? : 1. Jouer\n2.Quitter ");
+            int.TryParse(Console.ReadLine(), out choixUtilisateur);
+
+            return choixUtilisateur;
+        }
 
 
         // afficherMenuFin
         //
         // affiche le menu de fin et retourne le choix de l'utilisateur : 1 pour rejouer, 2 pour quitter
+        public int afficherMenuFin()
+        {
+            int choixUtilisateur = 0;
+            Console.WriteLine("Vous avez fini ! Que voulez-vous faire maintenant? :\n1. Rejouer\n2.Quitter");
+            int.TryParse(Console.ReadLine(), out choixUtilisateur);
 
+            return choixUtilisateur;
+        }
 
         // demanderPositionJoueur
         // 
