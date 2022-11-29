@@ -51,6 +51,10 @@ namespace LaboFinal_A22
         // attaquer
         //
         // renvoie la statistique d'attaque
+        public int attaquer()
+        {
+            return this.att;
+        }
 
 
         // defendre
@@ -90,6 +94,14 @@ namespace LaboFinal_A22
         // "Nom : {0}, Hp : {1}"
         //
         // @return string le nom et les points de vie selon le format établi
+        public string enumererStats()
+        {
+            //string statsNomHP = ("Nom : " + this.nom[0] + ", Hp : {1}", this.hp);
+            string statsNomHP = string.Format("Nom : {0}, Hp : {1}", this.nom, this.hp);
+            Console.WriteLine(statsNomHP);
+
+            return statsNomHP;
+        }
 
     }
 }

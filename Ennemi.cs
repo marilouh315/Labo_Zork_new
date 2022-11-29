@@ -39,7 +39,7 @@ namespace LaboFinal_A22
         //
         // reçoit tous les attributs en paramètre
         // assigne les paramètres aux attributs correspondants
-        public Ennemi(string nom, int att, int matt, int def, int mdef, int hp, int magique)
+        public Ennemi(string nom, int att, int matt, int def, int mdef, int hp, bool magique)
         {
             this.nom = nom;
             this.att = att;
