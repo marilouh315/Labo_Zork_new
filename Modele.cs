@@ -85,9 +85,10 @@ namespace LaboFinal_A22
             // utiliser le tableau afin d'obtenir les informations désirées pour utiliser le constructeur de la classe Joueur
             // et finir de créer l'instance du joueur avec ces informations
             // ne pas oublier d'assigner l'habilete au joueur selon le id après la construction
-            Habilete HabiletJoueur = new Habilete(stats[6]);
-            joueur = new Joueur(stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], HabiletJoueur);
-            
+            joueur = new Joueur(stats[0], stats[1], stats[2], stats[3], stats[4], stats[5]);
+
+            Habilete.id = stats[6];
+
             // retourner le joueur configuré
             return joueur;
 

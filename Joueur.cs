@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,6 +30,14 @@ namespace LaboFinal_A22
         // habilete un attribut du type Habilete
         public int habileteID;
 
+        public  Joueur (int att,int matt,int def,int mdef,int hp)
+        {
+            this.att = att;
+            this.matt = matt;
+            this.def = def;
+            this.mdef = mdef;
+            this.hp = hp;
+        }
         // enumererActions
         //
         // renvoie un string contenant les actions possibles, séparées par des virgules
