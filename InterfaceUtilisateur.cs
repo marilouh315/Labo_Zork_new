@@ -73,6 +73,13 @@ namespace LaboFinal_A22
         // quand on a fini de lire tout le fichier on initialise l'attribut hauteur
         public void chargerCarte()
         {
+            List<string> ligne = new List<string>();
+            StreamReader lecture = new StreamReader("");
+            while (!lecture.EndOfStream)
+            {
+                ligne.Append(lecture.ReadLine());
+            }
+            lecture.Close();
             // initialiser la liste des cases de la carte
 
             // initialiser un lecteur de fichier texte pour lire le fichier carte.txt
@@ -88,10 +95,11 @@ namespace LaboFinal_A22
                 // lire une ligne et la placer dans une variable temporairement
 
                 // pour chaque lettre de la ligne
-
-                    // ajouter le caractère au tableau
+                ligne.Append(lecture.ReadLine());
+                // ajouter le caractère au tableau
 
             }
+            lecture.Close();
             // fermer le lecteur pour libérer le fichier 
 
             // Une fois le tableau de la carte rempli, initialiser la hauteur de la carte
