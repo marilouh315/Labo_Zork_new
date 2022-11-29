@@ -70,7 +70,7 @@ namespace LaboFinal_A22
         public Joueur genererJoueur(string fichier, string nom)
         {
             // Déclarer une variable de type Joueur, nous allons créer l'instance plus tard
-            string joueur;
+            Joueur joueur;
             // Initialiser la classe pour lire le fichier
             List<string> lignes = new List<string>();
             StreamReader lecture = new StreamReader(fichier + ".txt");
@@ -84,10 +84,12 @@ namespace LaboFinal_A22
             lecture.Close();
             // utiliser le tableau afin d'obtenir les informations désirées pour utiliser le constructeur de la classe Joueur
             // et finir de créer l'instance du joueur avec ces informations
-            Joueur jeux = new Joueur(stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], stats[6]);
             // ne pas oublier d'assigner l'habilete au joueur selon le id après la construction
-
+            Habilete HabiletJoueur = new Habilete(stats[6]);
+            joueur = new Joueur(stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], HabiletJoueur);
+            
             // retourner le joueur configuré
+            return joueur;
 
         }
 

@@ -1,0 +1,5 @@
+G:\Mon Drive\programmation\Labo_Zork_new\obj\Debug\net6.0\LaboFinal_A22.csproj.AssemblyReference.cache
+G:\Mon Drive\programmation\Labo_Zork_new\obj\Debug\net6.0\LaboFinal_A22.GeneratedMSBuildEditorConfig.editorconfig
+G:\Mon Drive\programmation\Labo_Zork_new\obj\Debug\net6.0\LaboFinal_A22.AssemblyInfoInputs.cache
+G:\Mon Drive\programmation\Labo_Zork_new\obj\Debug\net6.0\LaboFinal_A22.AssemblyInfo.cs
+G:\Mon Drive\programmation\Labo_Zork_new\obj\Debug\net6.0\LaboFinal_A22.csproj.CoreCompileInputs.cache
