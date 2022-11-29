@@ -25,23 +25,50 @@ namespace LaboFinal_A22
     {
         // attributs (public)
         // un nom 
+        public string nom;
         // att, matt, def, mdef, hp des entiers
+        public int att;
+        public int matt;
+        public int def;
+        public int mdef;
+        public int hp;
         // magique un attribut qui détermine si les attaques sont magiques ou non
+        public bool magique;
 
         // Constructeur
         //
         // reçoit tous les attributs en paramètre
         // assigne les paramètres aux attributs correspondants
+        public Ennemi(string nom, int att, int matt, int def, int mdef, int hp, int magique)
+        {
+            this.nom = nom;
+            this.att = att;
+            this.matt = matt;
+            this.def = def;
+            this.mdef = mdef;
+            this.hp = hp;
+            this.magique = magique;
+        }
+
 
         // estMagique
         //
         // retourne l'attribut magique 
         //
         // @return bool vrai si les attaques sont magiques, faux sinon
+        public bool estMagique()
+        {
+            return this.magique;
+        }
 
         // attaquer
         //
         // renvoie la statistique d'attaque
+        public int attaquer()
+        {
+            return this.att;
+        }
+        
 
         // defendre
         //

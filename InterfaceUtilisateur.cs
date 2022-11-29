@@ -108,6 +108,30 @@ namespace LaboFinal_A22
         // retourne le choix de la classe : 0  pour guerrier, 1 pour magicien ou 2 pour roublard
         //
         // @return int le nombre correspondant à la classe choisie
+        public int afficherMenuCreation()
+        {
+            int classe = 0;
+
+            Console.WriteLine("Choisir le type de personnage (1-3) entre :" + this.menuCreation); //"1. Guerrier\n2. Roublard\n3. Magicien"
+            int.TryParse(Console.ReadLine(), out classe);
+
+            switch (classe)
+            {
+                case 1:
+                    Console.WriteLine("Vous avez choisi : le type Guerrier");
+                    break;
+                case 2:
+                    Console.WriteLine("Vous avez choisi : le type Roublard");
+                    break;
+                case 3:
+                    Console.WriteLine("Vous avez choisi : le type Magicien");
+                    break;
+                default:
+                    Console.WriteLine("Option invalide, veuillez choisir à nouveau!");
+                    break;
+            }
+            return classe;
+        }
 
 
         // demanderNom
@@ -115,6 +139,14 @@ namespace LaboFinal_A22
         // demande le nom du personnage à la console et retourne la réponse
         // 
         // @return string le nom choisi pour le personnage
+        public string demanderNom()
+        {
+            string nom = "";
+            Console.WriteLine("Quel sera votre nom de personnage?");
+            nom = Console.ReadLine();
+
+            return nom;
+        }
 
 
         // afficherCarte
@@ -208,6 +240,10 @@ namespace LaboFinal_A22
         // afficherEntete
         //
         // affiche l'entête du jeu
+        public void afficherEntete()
+        {
+            Console.WriteLine(this.entete);
+        }
 
 
         // afficherMenuCombat

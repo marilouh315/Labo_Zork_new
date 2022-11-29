@@ -19,14 +19,15 @@ namespace LaboFinal_A22
     {
         // attributs (public)
         // un nom 
+        public string nom;
         // att, matt, def, mdef, hp des entiers
+        public int att;
+        public int matt;
+        public int def;
+        public int mdef;
+        public int hp;
         // habilete un attribut du type Habilete
-
-        // Constructeur
-        //
-        // reçoit tous les attributs en paramètre sauf l'habilete
-        // assigne les paramètres aux attributs correspondants
-
+        public int habileteID;
 
         // enumererActions
         //
