@@ -75,18 +75,28 @@ namespace LaboFinal_A22
         // @param int dmg      le nombre de point de dommage avant la réduction par la défense
         public void defendre(bool magique, int dmg)
         {
-
+            int dommagesFinaux = 0;
             // si l'attaque est magique
-
+            if (magique)
+            {
                 // les dommages finaux sont le dommage - la défense magique
+                dommagesFinaux = dmg - this.mdef;
+            }
 
             // sinon
-
+            else
+            {
                 // les dommages finaux sont le dommage - la défense
+                dommagesFinaux = dmg - this.def;
+            }
 
             // si les dommages finaux sont plus grands que 0
-
+            if (dommagesFinaux > 0)
+            {
                 // diminuer les points de vie du nombre de points de dommage final
+                // donner des nouveaux hp
+                this.hp -= dommagesFinaux;
+            }
 
         }
 
@@ -95,6 +105,19 @@ namespace LaboFinal_A22
         // détermine s'il reste des points de vie
         // 
         // @return bool vrai s'il reste des points de vie, faux sinon
+        public bool estVivant()
+        {
+            bool vivant = true;
+            if (this.hp > 0)
+            {
+                vivant = true;
+            }
+            else
+            {
+                vivant = false; 
+            }
+            return vivant;
+        }
 
 
         // enumererStats
