@@ -28,15 +28,17 @@ namespace LaboFinal_A22
         public int mdef;
         public int hp;
         // habilete un attribut du type Habilete
-        public int habileteID;
+        public Habilete habilete;
 
-        public  Joueur (int att,int matt,int def,int mdef,int hp)
+        public Joueur(string nom, int att, int matt, int def, int mdef, int hp, Habilete habilete)
         {
+            this.nom = nom;
             this.att = att;
             this.matt = matt;
             this.def = def;
             this.mdef = mdef;
             this.hp = hp;
+            this.habilete = habilete;
         }
         // enumererActions
         //

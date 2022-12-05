@@ -49,6 +49,13 @@ namespace LaboFinal_A22
         }
 
         // executer
+        //
+        // ajoute le delai de récupération à l'attribut tour
+        // calcul le dommage final selon l'attaque magique reçue en paramètre
+        //
+        // @param int matt l'attaque magique du personnage qui utilise l'habilete
+        // @return le nombre de points de dommage total (attaque magique + dommage de l'habilete)
+
         public int executer(int matt)
         {
             this.tour += this.recuperation;
@@ -56,12 +63,6 @@ namespace LaboFinal_A22
                 return dommagetotal;
         }
 
-        //
-        // ajoute le delai de récupération à l'attribut tour
-        // calcul le dommage final selon l'attaque magique reçue en paramètre
-        //
-        // @param int matt l'attaque magique du personnage qui utilise l'habilete
-        // @return le nombre de points de dommage total (attaque magique + dommage de l'habilete)
        
         // recuperer
         //

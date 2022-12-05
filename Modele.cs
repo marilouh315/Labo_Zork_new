@@ -13,6 +13,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +23,7 @@ namespace LaboFinal_A22
     {
         // attributs
         // une liste ou un tableau d'habiletes, le type est donc la classe Habilete
-
+        List<Habilete> habiletes;
         // Consturcteur
         // 
         // initialise le contenant pour les habiletés
@@ -71,6 +72,7 @@ namespace LaboFinal_A22
         {
             // Déclarer une variable de type Joueur, nous allons créer l'instance plus tard
             Joueur joueur;
+
             // Initialiser la classe pour lire le fichier
             List<string> lignes = new List<string>();
             StreamReader lecture = new StreamReader(fichier + ".txt");
@@ -80,14 +82,33 @@ namespace LaboFinal_A22
             // Transformer la ligne en tableau de string, en utilisant la virgule comme séparateur
 
             string ligne = lecture.ReadLine();
-            string[] stats = ligne.Split(',');
+            string[] texte = ligne.Split(',');
             lecture.Close();
+
+            int[] stats = new int[6];
+
+            for (int i = 0; i < nom.Length - 1; i++)
+            {
+                int.TryParse(texte[i + 1], out stats[i]);
+            }
+
             // utiliser le tableau afin d'obtenir les informations désirées pour utiliser le constructeur de la classe Joueur
             // et finir de créer l'instance du joueur avec ces informations
             // ne pas oublier d'assigner l'habilete au joueur selon le id après la construction
-            joueur = new Joueur(stats[0], stats[1], stats[2], stats[3], stats[4], stats[5]);
+            joueur = new Joueur(nom, stats[0], stats[1], stats[2], stats[3], stats[4], habiletes [0]);
 
-            Habilete.id = stats[6];
+            if (habiletes[0].id == stats[5])
+            {
+                joueur = new Joueur(nom, stats[0], stats[1], stats[2], stats[3], stats[4], habiletes[0]);
+            }
+            else if (habiletes[1].id == stats[5])
+            {
+                joueur = new Joueur(nom, stats[0], stats[1], stats[2], stats[3], stats[4], habiletes[1]);
+            }
+            else if (habiletes[2].id == stats[5])
+            {
+                joueur = new Joueur(nom, stats[0], stats[1], stats[2], stats[3], stats[4], habiletes[2]);
+            }
 
             // retourner le joueur configuré
             return joueur;
@@ -106,24 +127,34 @@ namespace LaboFinal_A22
         public Ennemi genererEnnemi(string fichier)
         {
             // Déclarer une variable de type Ennemi, nous allons créer l'instance plus tard
-            string ennemi;
+           Ennemi ennemi;
             // Initialiser la classe pour lire le fichier
             List<string> lignes = new List<string>();
-            StreamReader lecture = new StreamReader(fichier + ".txt");
+            StreamReader lecture = new StreamReader( fichier + ".txt");
             // Lire la première ligne dans le vide ( on a besoin seulement des stats
             lecture.ReadLine();
             // Lire la deuxième ligne et la garder en mémoire
             // Transformer la ligne en tableau de string, en utilisant la virgule comme séparateur
 
             string ligne = lecture.ReadLine();
-            string[] stats = ligne.Split(',');
+            string[] texte = ligne.Split(',');
             lecture.Close();
 
+            int[] stats = new int[6];
+
+            for (int i = 0; i < texte.Length - 2; i++)
+            {
+                int.TryParse(texte[i + 1], out stats[i]);
+            }
+            bool magic;
+            bool.TryParse(texte[6], out magic);
             // utiliser le tableau afin d'obtenir les informations désirées pour utiliser le constructeur de la classe Joueur
             // et finir de créer l'instance du joueur avec ces informations
-            Ennemi jeux = new Ennemi(stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], stats[6]);
+            // ne pas oublier d'assigner l'habilete au joueur selon le id après la construction
+            ennemi = new Ennemi(texte[0], stats[0], stats[1], stats[2], stats[3], stats[4] , magic);
 
             // retourner le joueur configuré
+            return ennemi;
 
         }
     }
