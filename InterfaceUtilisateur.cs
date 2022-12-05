@@ -383,7 +383,7 @@ namespace LaboFinal_A22
         public bool deplacerJoueur(int direction)
         {
             // initialiser une variable pour dire si le joueur est arrivé à la sortie
-            bool estSorti = true;
+            bool estSorti = false;
 
             // initialiser une variable (compteur) pour le numéro de la case où le joueur est placé
             int caseJoueur = 0;
@@ -396,39 +396,52 @@ namespace LaboFinal_A22
 
             // selon la direction
             // si le joueur va vers le haut
-            if (afficherMenuExploration() == 0)
+            if (direction == 0)
             {
                 // la case de destination est la case du joueur - la largeur de la carte
-                caseDestination = caseJoueur - this.carte.Lenght;
+                caseDestination = caseJoueur - this.largeur;
             }
-
             // vers le bas
-
+            else if (direction == 1)
+            {
                 // la case de destination est la case du joueur + la largeur de la carte
-
+                caseDestination = caseJoueur + this.largeur;
+            }
             // vers la gauche
-
+            else if (direction == 2)
+            {
                 // la case de destination est la case du joueur - 1
-
+                caseDestination = caseJoueur - 1;
+            }
             // vers la droite
-
+            else if (direction == 3)
+            {
                 // la case de destination est la case du joueur + 1
+                caseDestination = caseJoueur + 1;
+            }
 
             // si la position de destination est dans la carte
             // >= 0 et < le nombre d'éléments de la carte
-
+            if (caseDestination >= 0 && caseDestination < this.carte.Count)
+            {
                 // si le contenu de la carte à la position de destination est la sortie (un S)
-
+                if (this.carte.Count[caseDestination] == 'S')
+                {
                     // changer la valeur de la variable de retour à true
+                    estSorti = true;
+                }
 
                 // si le contenu de la carte à la position de destination est différente de # (un mur)
-
+                if (this.carte[caseDestination] != '#')
+                {
                     // remplacer le joueur (la lettre J) de sa position dans la carte par un vide: " "
-
+                    caseJoueur = " ";
                     // placer le joueur (le symbole J) dans la carte, à la destination
-
+                    caseDestination = 'J';
+                }
+            }
             // retourner la variable de retour, qui détermine si on a atteint la sortie ou non
-
+            return estSorti;
         }
     }
 }
