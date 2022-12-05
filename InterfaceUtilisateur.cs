@@ -185,14 +185,34 @@ namespace LaboFinal_A22
         {
 
             // afficher les instructions
+            Console.WriteLine(this.instructions);
 
             // récupérer la réponse de l'utilisateur
+            int choixDeplacement = 4;
 
             // selon la réponse W (haut),S(bas),A(gauche) ou D(droite)
             // assigner 0,1,2 ou 3 à une variable pour le résultat
-
+            while (choix == 4)
+            {
+                if (Console.ReadKey().KeyChar == 'w')
+                {
+                    choixDeplacement = 0;
+                }
+                else if (Console.ReadKey().KeyChar == 's')
+                {
+                    choixDeplacement = 1;
+                }
+                else if (Console.ReadKey().KeyChar == 'a')
+                {
+                    choixDeplacement = 2;
+                }
+                else if (Console.ReadKey().KeyChar == 'd')
+                {
+                    choixDeplacement = 3;
+                }
+            }
             // retourner la variable contentant le résultat du choix
-
+            return choixDeplacement;
         }
 
         // afficherArene
@@ -265,15 +285,19 @@ namespace LaboFinal_A22
         public int afficherMenuCombat(string[] actions)
         {
             // initialiser une variable pour le choix de l'action avec l'action 0
+            int choixAction = 0;
 
             // pour tous les éléments du tableau des actions
-
+            for (int i = 0; i < actions.Length; i++)
+            {
                 // afficher i + 1 suivi du nom de l'action
-
+                Console.WriteLine((i+1) + actions[i]);
+            }
             // lire la réponse de l'utilisateur
+            int.TryParse(Console.ReadLine(), out choixAction);
 
-            // retourne la position de l'action dans le tableau reçu en paramètre
-
+            // retourne la position "dans le tableau" de l'action dans le tableau reçu en paramètre
+            return choixAction;
         }
 
         // afficherMenuCible
@@ -330,17 +354,21 @@ namespace LaboFinal_A22
         // les y commencent à 0 et sont positifs vers le bas
         //
         // @return int le numéro de la case où le joueur est
-        public int demanderPosition()
+        public int demanderPositionJoueur()
         {
             // initialiser une variable pour la position du joueur dans la liste this.carte
+            int compteurPosition = 0;
 
             // tant que le compteur position est plus petit que la longueur de la liste
             // et que le contenu de la carte à la position du compteur est différente de J
-
+            while (compteurPosition < this.carte.Lenght && this.carte[compteurPosition] != 'J' )
+            {
                 // augmenter le compteur position
+                compteurPosition++;    
+            }
 
             // renvoyer la position dujoueur
-
+            return compteurPosition;
         }
 
         // deplacerJoueur
@@ -355,17 +383,24 @@ namespace LaboFinal_A22
         public bool deplacerJoueur(int direction)
         {
             // initialiser une variable pour dire si le joueur est arrivé à la sortie
+            bool estSorti = true;
 
             // initialiser une variable (compteur) pour le numéro de la case où le joueur est placé
+            int caseJoueur = 0;
 
             // initialiser une variable pour le numéro de la case de destination
+            int caseDestination = 0;
 
             // trouver la case dans laquelle le joueur est avec la méthode demanderPosition()
+            demanderPositionJoueur();
 
             // selon la direction
             // si le joueur va vers le haut
-
+            if (afficherMenuExploration() == 0)
+            {
                 // la case de destination est la case du joueur - la largeur de la carte
+                caseDestination = caseJoueur - this.carte.Lenght;
+            }
 
             // vers le bas
 
