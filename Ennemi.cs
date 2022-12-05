@@ -86,8 +86,7 @@ namespace LaboFinal_A22
                 // les dommages finaux sont le dommage - la défense magique
                 dommagesFinaux = dmg - this.mdef;
             }
-            }
-
+            
             // sinon
             else
             {
