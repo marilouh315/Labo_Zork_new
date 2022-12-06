@@ -65,7 +65,6 @@ namespace LaboFinal_A22
             // utiliser la méthode chargerCarte pour initialiser la carte et ses dimensions
             chargerCarte();
         }
-
         // chargerCarte
         //
         // lit la carte dans le fichier du même nom et la place dans l'attribut carte
@@ -74,41 +73,46 @@ namespace LaboFinal_A22
         public void chargerCarte()
         {
             List<string> ligne = new List<string>();
-            StreamReader lecture = new StreamReader("");
+            // initialiser la liste des cases de la carte
+            // initialiser un lecteur de fichier texte pour lire le fichier carte.txt
+            StreamReader lecture = new StreamReader("carte.txt");
+            // lire la première ligne de la carte. NE PAS METTRE CETTE LIGNE DANS LA LISTE
+            // initialiser la largeur de la carte en prenant la longueur de la première ligne
+            int largeur = lecture.ReadLine().Length;
+            int hauteur = 0;
+            int compteur = 0;
+            // les string sont des tableau, on a accès à la propriété .Lenght
+            // au moyen d'une boucle while remplir la liste de la carte avec chacun des symboles du fichier texte
             while (!lecture.EndOfStream)
             {
-                ligne.Append(lecture.ReadLine());
-            }
-            lecture.Close();
-            // initialiser la liste des cases de la carte
-
-            // initialiser un lecteur de fichier texte pour lire le fichier carte.txt
-
-            // lire la première ligne de la carte. NE PAS METTRE CETTE LIGNE DANS LA LISTE
-
-            // initialiser la largeur de la carte en prenant la longueur de la première ligne
-            // les string sont des tableau, on a accès à la propriété .Lenght
-
-            // au moyen d'une boucle while remplir la liste de la carte avec chacun des symboles du fichier texte
-            while (!lecteur.EndOfStream)
-            {
                 // lire une ligne et la placer dans une variable temporairement
-
-                // pour chaque lettre de la ligne
-                ligne.Append(lecture.ReadLine());
-                // ajouter le caractère au tableau
-
+                ligne.Add(lecture.ReadLine());
+                for (int j = 0; j < largeur; j++)
+                {
+                    // pour chaque lettre de la ligne
+                    // ajouter le caractère au tableau
+                    this.carte.Add(ligne[hauteur][j]);
+                }
+                hauteur++;
             }
-            lecture.Close();
-            // fermer le lecteur pour libérer le fichier 
+            int totalcaractere = largeur * hauteur;
 
+            // fermer le lecteur pour libérer le fichier 
+            lecture.Close();
             // Une fois le tableau de la carte rempli, initialiser la hauteur de la carte
             // la hauteur est le nombre d'éléments de la liste / la largeur de la carte
 
             // placer le joueur à la position de départ, la première case libre en haut à gauche
-
+            bool placer = false;
+            while (!placer)
+            {
+                int x = 0;
+                if (this.carte[x] == ' ')
+                {
+                    this.carte[x] = 'j';
+                }
+            }
         }
-
 
         // afficherMenuCreation
         //
@@ -272,7 +276,7 @@ namespace LaboFinal_A22
                     for (int j = 0; j < this.arene.Length; j++)
                     {
                         // afficher le symbole actuel : this.arene[i][j] , sans sauter de ligne
-                        this.arene[i][j];
+                        Console.WriteLine(this.arene[i][j]);
                     }
                 }
                 // sauter une ligne
@@ -357,7 +361,7 @@ namespace LaboFinal_A22
         {
             int choixUtilisateur = 0;
 
-            Console.WriteLine("Bienvenue dans le jeu wannabe Zork. \nZork a été ressucité! Tous les aventuriers sont sollicités pour débarasser Azerim de cette menace!")
+            Console.WriteLine("Bienvenue dans le jeu wannabe Zork. \nZork a été ressucité! Tous les aventuriers sont sollicités pour débarasser Azerim de cette menace!");
             Console.WriteLine("Que voulez-vous faire? : 1. Jouer\n2.Quitter ");
             int.TryParse(Console.ReadLine(), out choixUtilisateur);
 
