@@ -172,6 +172,7 @@ namespace LaboFinal_A22
                 // sauter une ligne
         }
 
+
         // afficherMenuExploration
         //
         // affiche le menu d'exploration et retourne le choix de l'utilisateur
@@ -183,7 +184,6 @@ namespace LaboFinal_A22
         //          - 3 : droite
         public int afficherMenuExploration()
         {
-
             // afficher les instructions
             Console.WriteLine(this.instructions);
 
@@ -231,38 +231,68 @@ namespace LaboFinal_A22
         public void afficherArene(string[] ennemis)
         {
             // variable pour savoir quel ennemi on affiche, le premier est 0
+            int numEnnemi = 0;
 
             // pour chaque case du tableau this.arene (chaque ligne d'affichage)
-
+            for (int i = 0; i < this.arene.Length; i++)
+            {
                 // initialiser une variable string ligne
+                string ligne = "";
                 // et lui assigner la valeur de la ligne actuelle : i
+                ligne = this.arene[i];
 
                 // si on est à la 3ème ligne
-
+                if (ligne == this.arene[2])
+                {
                     // remplacer le marqueur {0} par le nom du premier ennemi
+                    ligne = String.Format(ligne, ennemis[numEnnemi]);
+                    numEnnemi++;
+                }
 
                 // sinon si on est à la 5 ème ligne 
-
+                else if (ligne == this.arene[4])
+                {
                     // remplacer le marqueur {0} par le nom du deuxième ennemi
+                    ligne = String.Format(ligne, ennemis[numEnnemi]);
+                    numEnnemi++;
+                }
 
                 // sinon si on est à la 7 ème ligne
-
+                else if (ligne == this.arene[6])
+                {
                     // remplacer le marqueur {0} par le nom du troisième ennemi
+                    ligne = String.Format(ligne, ennemis[numEnnemi]);
+                    numEnnemi++;
+                }
 
                 // sinon
-
+                else
+                {
                     // pour chaque case du string dans this.arene à la position actuelle (i)
-
+                    for (int j = 0; j < this.arene.Length; j++)
+                    {
                         // afficher le symbole actuel : this.arene[i][j] , sans sauter de ligne
-
+                        this.arene[i][j];
+                    }
+                }
                 // sauter une ligne
+                Console.WriteLine(ligne);
+            }
         }
+
 
         // afficherStats
         // 
         // affiche les stats reçues en paramètre ligne par ligne
         //
         // @param string[] stats un tableau de string contenant les stats
+        public void afficherStats(string[] stats)
+        {
+            for (int i = 0; i < stats.Length; i++)
+            {
+                Console.WriteLine(stats[i]);
+            }
+        }
 
 
         // afficherEntete
