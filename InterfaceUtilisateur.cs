@@ -73,7 +73,6 @@ namespace LaboFinal_A22
         public void chargerCarte()
         {
             this.carte= new List<char>();
-            List<string> ligne = new List<string>();
             // initialiser la liste des cases de la carte
             // initialiser un lecteur de fichier texte pour lire le fichier carte.txt
             StreamReader lecture = new StreamReader("carte.txt");
@@ -81,11 +80,10 @@ namespace LaboFinal_A22
             // initialiser la largeur de la carte en prenant la longueur de la première ligne
             int largeur = lecture.ReadLine().Length;
             int hauteur = 0;
-            int compteur = 0;
             // les string sont des tableau, on a accès à la propriété .Lenght
             // au moyen d'une boucle while remplir la liste de la carte avec chacun des symboles du fichier texte
 
-            string lire = ""; 
+            string lire = " "; 
             while (!lecture.EndOfStream)
             {
                 // lire une ligne et la placer dans une variable temporairement
@@ -157,10 +155,9 @@ namespace LaboFinal_A22
         // @return string le nom choisi pour le personnage
         public string demanderNom()
         {
-            string nom = "";
+            string nom = " ";
             Console.WriteLine("Quel sera votre nom de personnage?");
             nom = Console.ReadLine();
-
             return nom;
         }
 
