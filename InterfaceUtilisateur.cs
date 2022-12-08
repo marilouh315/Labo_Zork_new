@@ -78,8 +78,7 @@ namespace LaboFinal_A22
             StreamReader lecture = new StreamReader("carte.txt");
             // lire la première ligne de la carte. NE PAS METTRE CETTE LIGNE DANS LA LISTE
             // initialiser la largeur de la carte en prenant la longueur de la première ligne
-            int largeur = lecture.ReadLine().Length;
-            int hauteur = 0;
+            this.largeur = lecture.ReadLine().Length;
             // les string sont des tableau, on a accès à la propriété .Lenght
             // au moyen d'une boucle while remplir la liste de la carte avec chacun des symboles du fichier texte
 
@@ -95,9 +94,8 @@ namespace LaboFinal_A22
                     // ajouter le caractère au tableau
                     this.carte.Add(lire[j]);
                 }
-                hauteur++;
+                this.hauteur++;
             }
-            int totalcaractere = largeur * hauteur;
 
             // fermer le lecteur pour libérer le fichier 
             lecture.Close();
@@ -112,7 +110,9 @@ namespace LaboFinal_A22
                 if (this.carte[x] == ' ')
                 {
                     this.carte[x] = 'j';
+                    placer = true;
                 }
+                x ++;
             }
         }
 
@@ -168,14 +168,14 @@ namespace LaboFinal_A22
         public void afficherCarte()
         {
             // pour chaque unité de hauteur de la carte
-            for (int i = 0; i < hauteur; i++)
+            for (int i = 0; i < this.hauteur; i++)
             {
                 // pour chaque unité de largeur de la carte
-                for (int j = 0; j < largeur; j++)
+                for (int j = 0; j < this.largeur; j++)
                 {
                     // afficher sur la même ligne de console
                     // le symbole de la liste à la position : j + (i * largeur)
-                    Console.Write(this.carte[j + (i * largeur)]);
+                    Console.Write(this.carte[j + (i * this.largeur)]);
                 }
                 // sauter une ligne
                 Console.WriteLine();
