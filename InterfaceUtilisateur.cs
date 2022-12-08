@@ -34,7 +34,7 @@ namespace LaboFinal_A22
         public string menuCreation;
         public string menuFin;
         public string instructions;
-        public List<string> carte;
+        public List<char> carte;
         public int largeur;
         public int hauteur;
         public string[] arene;
@@ -72,6 +72,7 @@ namespace LaboFinal_A22
         // quand on a fini de lire tout le fichier on initialise l'attribut hauteur
         public void chargerCarte()
         {
+            this.carte= new List<char>();
             List<string> ligne = new List<string>();
             // initialiser la liste des cases de la carte
             // initialiser un lecteur de fichier texte pour lire le fichier carte.txt
@@ -83,15 +84,18 @@ namespace LaboFinal_A22
             int compteur = 0;
             // les string sont des tableau, on a accès à la propriété .Lenght
             // au moyen d'une boucle while remplir la liste de la carte avec chacun des symboles du fichier texte
+
+            string lire = ""; 
             while (!lecture.EndOfStream)
             {
                 // lire une ligne et la placer dans une variable temporairement
-                ligne.Add(lecture.ReadLine());
-                for (int j = 0; j < largeur; j++)
+                lire = lecture.ReadLine();
+                for (int j = 0; j < lire.Length; j++)
                 {
+
                     // pour chaque lettre de la ligne
                     // ajouter le caractère au tableau
-                    this.carte.Add(ligne[hauteur][j]);
+                    this.carte.Add(lire[j]);
                 }
                 hauteur++;
             }
@@ -196,7 +200,7 @@ namespace LaboFinal_A22
 
             // selon la réponse W (haut),S(bas),A(gauche) ou D(droite)
             // assigner 0,1,2 ou 3 à une variable pour le résultat
-            while (choix == 4)
+            while (choixDeplacement == 4)
             {
                 if (Console.ReadKey().KeyChar == 'w')
                 {
@@ -395,7 +399,7 @@ namespace LaboFinal_A22
 
             // tant que le compteur position est plus petit que la longueur de la liste
             // et que le contenu de la carte à la position du compteur est différente de J
-            while (compteurPosition < this.carte.Lenght && this.carte[compteurPosition] != 'J' )
+            while (compteurPosition < this.carte.Count && this.carte[compteurPosition] != 'J' )
             {
                 // augmenter le compteur position
                 compteurPosition++;    
@@ -459,7 +463,7 @@ namespace LaboFinal_A22
             if (caseDestination >= 0 && caseDestination < this.carte.Count)
             {
                 // si le contenu de la carte à la position de destination est la sortie (un S)
-                if (this.carte.Count[caseDestination] == 'S')
+                if (this.carte[caseDestination] == 'S')
                 {
                     // changer la valeur de la variable de retour à true
                     estSorti = true;
@@ -469,7 +473,7 @@ namespace LaboFinal_A22
                 if (this.carte[caseDestination] != '#')
                 {
                     // remplacer le joueur (la lettre J) de sa position dans la carte par un vide: " "
-                    caseJoueur = " ";
+                    caseJoueur = ' ';
                     // placer le joueur (le symbole J) dans la carte, à la destination
                     caseDestination = 'J';
                 }
