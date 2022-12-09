@@ -39,7 +39,7 @@ namespace LaboFinal_A22
         public int largeur;
         public int hauteur;
         public string[] arene;
-        
+
         // Constructeur
         // Initialise les attributs
         public InterfaceUtilisateur()
@@ -73,7 +73,7 @@ namespace LaboFinal_A22
         // quand on a fini de lire tout le fichier on initialise l'attribut hauteur
         public void chargerCarte()
         {
-            this.carte= new List<char>();
+            this.carte = new List<char>();
             // initialiser la liste des cases de la carte
             // initialiser un lecteur de fichier texte pour lire le fichier carte.txt
             StreamReader lecture = new StreamReader("carte.txt");
@@ -83,7 +83,7 @@ namespace LaboFinal_A22
             // les string sont des tableau, on a accès à la propriété .Lenght
             // au moyen d'une boucle while remplir la liste de la carte avec chacun des symboles du fichier texte
 
-            string lire = " "; 
+            string lire = " ";
             while (!lecture.EndOfStream)
             {
                 // lire une ligne et la placer dans une variable temporairement
@@ -114,7 +114,7 @@ namespace LaboFinal_A22
                     this.carte[x] = 'J';
                     placer = true;
                 }
-                x ++;
+                x++;
             }
         }
 
@@ -129,15 +129,16 @@ namespace LaboFinal_A22
             int classe = 0;
             bool choisi = false;
 
-            while (!choisi) { 
+            while (!choisi)
+            {
                 Console.WriteLine("Choisir le type de personnage (1-3) entre : \n" + this.menuCreation); //"1. Guerrier\n2. Roublard\n3. Magicien"
                 int.TryParse(Console.ReadLine(), out classe);
-            
+
                 switch (classe)
                 {
                     case 1:
                         Console.WriteLine("Vous avez choisi : le type Guerrier");
-                        choisi= true;
+                        choisi = true;
                         break;
                     case 2:
                         Console.WriteLine("Vous avez choisi : le type Roublard");
@@ -213,7 +214,7 @@ namespace LaboFinal_A22
             while (choixDeplacement == 4)
             {
                 char key = Console.ReadKey().KeyChar;
-                    if (key == 'w')
+                if (key == 'w')
                 {
                     choixDeplacement = 0;
                 }
@@ -249,7 +250,7 @@ namespace LaboFinal_A22
         //                  la case 2 est pour l'ennemi du bas
         public void afficherArene(string[] ennemis)
         {
-            
+
 
             // pour chaque case du tableau this.arene (chaque ligne d'affichage)
             for (int i = 0; i < this.arene.Length; i++)
@@ -263,28 +264,28 @@ namespace LaboFinal_A22
                 if (i == 2)
                 {
                     // remplacer le marqueur {0} par le nom du premier ennemi
-                    this.arene[i] = $"     {ennemis[0]}           ";
+                    ligne = String.Format(ligne, ennemis[0]);
                 }
 
                 // sinon si on est à la 5 ème ligne 
                 else if (i == 4)
                 {
                     // remplacer le marqueur {0} par le nom du deuxième ennemi
-                    this.arene[i] = $" J      {ennemis[1]}           ";
+                    ligne = String.Format(ligne, ennemis[1]);
                 }
 
                 // sinon si on est à la 7 ème ligne
                 else if (i == 6)
                 {
                     // remplacer le marqueur {0} par le nom du troisième ennemi
-                    this.arene[i] = $"     {ennemis[2]}           ";
+                    ligne = String.Format(ligne, ennemis[2]);
                 }
 
                 // pour chaque case du string dans this.arene à la position actuelle (i)
-                for (int j = 0; j < this.arene.Length; j++)
+                for (int j = 0; j < ligne.Length; j++)
                 {
                     // afficher le symbole actuel : this.arene[i][j] , sans sauter de ligne
-                    Console.Write(this.arene[i][j]);
+                    Console.Write(ligne[j]);
                 }
                 // sauter une ligne
                 Console.WriteLine();
@@ -332,7 +333,7 @@ namespace LaboFinal_A22
             for (int i = 0; i < actions.Length; i++)
             {
                 // afficher i + 1 suivi du nom de l'action
-                Console.WriteLine((i+1) + actions[i]);
+                Console.WriteLine((i + 1) + actions[i]);
             }
             // lire la réponse de l'utilisateur
             int.TryParse(Console.ReadLine(), out choixAction);
@@ -353,8 +354,8 @@ namespace LaboFinal_A22
         {
             int choix = 0;
             for (int i = 0; i < ennemis.Length; i++)
-            { 
-                Console.WriteLine((i+1) + ". " + ennemis[i]);
+            {
+                Console.WriteLine((i + 1) + ". " + ennemis[i]);
             }
             int.TryParse(Console.ReadLine(), out choix);
 
@@ -402,10 +403,10 @@ namespace LaboFinal_A22
 
             // tant que le compteur position est plus petit que la longueur de la liste
             // et que le contenu de la carte à la position du compteur est différente de J
-            while (compteurPosition < this.carte.Count && this.carte[compteurPosition] != 'J' )
+            while (compteurPosition < this.carte.Count && this.carte[compteurPosition] != 'J')
             {
                 // augmenter le compteur position
-                compteurPosition++;    
+                compteurPosition++;
             }
 
             // renvoyer la position dujoueur
