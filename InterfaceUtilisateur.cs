@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,7 @@ namespace LaboFinal_A22
             this.intro = "Zork a été ressucité! Tous les aventuriers sont sollicités pour débarasser Azerim de cette menace!";
             this.menuIntro = "1. Jouer\n2.Quitter";
             this.menuCreation = "1. Guerrier\n2. Roublard\n3. Magicien";
-            this.menuFin = "1. Rejouer\n2.Quitter";
+            this.menuFin = " 1. Rejouer\n2.Quitter";
             this.instructions = "W : Haut, A : Gauche, S : Bas, D : Droite";
             this.arene = new string[] {
                 "###################",
@@ -110,7 +111,7 @@ namespace LaboFinal_A22
             {
                 if (this.carte[x] == ' ')
                 {
-                    this.carte[x] = 'j';
+                    this.carte[x] = 'J';
                     placer = true;
                 }
                 x ++;
@@ -126,24 +127,30 @@ namespace LaboFinal_A22
         public int afficherMenuCreation()
         {
             int classe = 0;
+            bool choisi = false;
 
-            Console.WriteLine("Choisir le type de personnage (1-3) entre :" + this.menuCreation); //"1. Guerrier\n2. Roublard\n3. Magicien"
-            int.TryParse(Console.ReadLine(), out classe);
-
-            switch (classe)
-            {
-                case 1:
-                    Console.WriteLine("Vous avez choisi : le type Guerrier");
-                    break;
-                case 2:
-                    Console.WriteLine("Vous avez choisi : le type Roublard");
-                    break;
-                case 3:
-                    Console.WriteLine("Vous avez choisi : le type Magicien");
-                    break;
-                default:
-                    Console.WriteLine("Option invalide, veuillez choisir à nouveau!");
-                    break;
+            while (!choisi) { 
+                Console.WriteLine("Choisir le type de personnage (1-3) entre : \n" + this.menuCreation); //"1. Guerrier\n2. Roublard\n3. Magicien"
+                int.TryParse(Console.ReadLine(), out classe);
+            
+                switch (classe)
+                {
+                    case 1:
+                        Console.WriteLine("Vous avez choisi : le type Guerrier");
+                        choisi= true;
+                        break;
+                    case 2:
+                        Console.WriteLine("Vous avez choisi : le type Roublard");
+                        choisi = true;
+                        break;
+                    case 3:
+                        Console.WriteLine("Vous avez choisi : le type Magicien");
+                        choisi = true;
+                        break;
+                    default:
+                        Console.WriteLine("Option invalide, veuillez choisir à nouveau!");
+                        break;
+                }
             }
             return classe;
         }
@@ -205,19 +212,20 @@ namespace LaboFinal_A22
             // assigner 0,1,2 ou 3 à une variable pour le résultat
             while (choixDeplacement == 4)
             {
-                if (Console.ReadKey().KeyChar == 'w')
+                char key = Console.ReadKey().KeyChar;
+                    if (key == 'w')
                 {
                     choixDeplacement = 0;
                 }
-                else if (Console.ReadKey().KeyChar == 's')
+                else if (key == 's')
                 {
                     choixDeplacement = 1;
                 }
-                else if (Console.ReadKey().KeyChar == 'a')
+                else if (key == 'a')
                 {
                     choixDeplacement = 2;
                 }
-                else if (Console.ReadKey().KeyChar == 'd')
+                else if (key == 'd')
                 {
                     choixDeplacement = 3;
                 }
@@ -241,8 +249,7 @@ namespace LaboFinal_A22
         //                  la case 2 est pour l'ennemi du bas
         public void afficherArene(string[] ennemis)
         {
-            // variable pour savoir quel ennemi on affiche, le premier est 0
-            int numEnnemi = 0;
+            
 
             // pour chaque case du tableau this.arene (chaque ligne d'affichage)
             for (int i = 0; i < this.arene.Length; i++)
@@ -253,41 +260,34 @@ namespace LaboFinal_A22
                 ligne = this.arene[i];
 
                 // si on est à la 3ème ligne
-                if (ligne == this.arene[2])
+                if (i == 2)
                 {
                     // remplacer le marqueur {0} par le nom du premier ennemi
-                    ligne = String.Format(ligne, ennemis[numEnnemi]);
-                    numEnnemi++;
+                    this.arene[i] = $"     {ennemis[0]}           ";
                 }
 
                 // sinon si on est à la 5 ème ligne 
-                else if (ligne == this.arene[4])
+                else if (i == 4)
                 {
                     // remplacer le marqueur {0} par le nom du deuxième ennemi
-                    ligne = String.Format(ligne, ennemis[numEnnemi]);
-                    numEnnemi++;
+                    this.arene[i] = $" J      {ennemis[1]}           ";
                 }
 
                 // sinon si on est à la 7 ème ligne
-                else if (ligne == this.arene[6])
+                else if (i == 6)
                 {
                     // remplacer le marqueur {0} par le nom du troisième ennemi
-                    ligne = String.Format(ligne, ennemis[numEnnemi]);
-                    numEnnemi++;
+                    this.arene[i] = $"     {ennemis[2]}           ";
                 }
 
-                // sinon
-                else
+                // pour chaque case du string dans this.arene à la position actuelle (i)
+                for (int j = 0; j < this.arene.Length; j++)
                 {
-                    // pour chaque case du string dans this.arene à la position actuelle (i)
-                    for (int j = 0; j < this.arene.Length; j++)
-                    {
-                        // afficher le symbole actuel : this.arene[i][j] , sans sauter de ligne
-                        Console.WriteLine(this.arene[i][j]);
-                    }
+                    // afficher le symbole actuel : this.arene[i][j] , sans sauter de ligne
+                    Console.Write(this.arene[i][j]);
                 }
                 // sauter une ligne
-                Console.WriteLine(ligne);
+                Console.WriteLine();
             }
         }
 
@@ -369,7 +369,7 @@ namespace LaboFinal_A22
             int choixUtilisateur = 0;
 
             Console.WriteLine("Bienvenue dans le jeu wannabe Zork. \nZork a été ressucité! Tous les aventuriers sont sollicités pour débarasser Azerim de cette menace!");
-            Console.WriteLine("Que voulez-vous faire? : 1. Jouer\n2.Quitter ");
+            Console.WriteLine("Que voulez-vous faire? : \n 1. Jouer\n2.Quitter ");
             int.TryParse(Console.ReadLine(), out choixUtilisateur);
 
             return choixUtilisateur;
@@ -433,7 +433,7 @@ namespace LaboFinal_A22
             int caseDestination = 0;
 
             // trouver la case dans laquelle le joueur est avec la méthode demanderPosition()
-            demanderPositionJoueur();
+            caseJoueur = demanderPositionJoueur();
 
             // selon la direction
             // si le joueur va vers le haut
@@ -476,9 +476,9 @@ namespace LaboFinal_A22
                 if (this.carte[caseDestination] != '#')
                 {
                     // remplacer le joueur (la lettre J) de sa position dans la carte par un vide: " "
-                    caseJoueur = ' ';
+                    this.carte[caseJoueur] = ' ';
                     // placer le joueur (le symbole J) dans la carte, à la destination
-                    caseDestination = 'J';
+                    this.carte[caseDestination] = 'J';
                 }
             }
             // retourner la variable de retour, qui détermine si on a atteint la sortie ou non

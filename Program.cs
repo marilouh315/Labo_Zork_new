@@ -4,8 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Controleur ctrl = new Controleur(new string[2] { "orc", "koboldMage" });
-            ctrl.jouer();
+             Controleur ctrl = new Controleur(new string[2] { "orc", "koboldMage" });
+             ctrl.jouer();
+           
         }
     }
 }
