@@ -104,9 +104,10 @@ namespace LaboFinal_A22
 
             // placer le joueur à la position de départ, la première case libre en haut à gauche
             bool placer = false;
+            int x = 0;
+
             while (!placer)
             {
-                int x = 0;
                 if (this.carte[x] == ' ')
                 {
                     this.carte[x] = 'j';
