@@ -132,7 +132,6 @@ namespace LaboFinal_A22
         {
             //string statsNomHP = ("Nom : " + this.nom[0] + ", Hp : {1}", this.hp);
             string statsNomHP = string.Format("Nom : {0}, Hp : {1}", this.nom, this.hp);
-            Console.WriteLine(statsNomHP);
 
             return statsNomHP;
         }

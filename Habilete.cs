@@ -56,10 +56,10 @@ namespace LaboFinal_A22
         // @param int matt l'attaque magique du personnage qui utilise l'habilete
         // @return le nombre de points de dommage total (attaque magique + dommage de l'habilete)
 
-        public int executer(int matt)
+        public int executer(int attm)
         {
             this.tour += this.recuperation;
-            int dommagetotal = matt + this.dmg;
+            int dommagetotal = attm + this.dmg;
                 return dommagetotal;
         }
 

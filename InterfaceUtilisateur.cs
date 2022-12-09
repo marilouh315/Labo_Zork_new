@@ -49,7 +49,7 @@ namespace LaboFinal_A22
             this.intro = "Zork a été ressucité! Tous les aventuriers sont sollicités pour débarasser Azerim de cette menace!";
             this.menuIntro = "1. Jouer\n2.Quitter";
             this.menuCreation = "1. Guerrier\n2. Roublard\n3. Magicien";
-            this.menuFin = " 1. Rejouer\n2.Quitter";
+            this.menuFin = "1. Rejouer\n2.Quitter";
             this.instructions = "W : Haut, A : Gauche, S : Bas, D : Droite";
             this.arene = new string[] {
                 "###################",
@@ -139,14 +139,17 @@ namespace LaboFinal_A22
                     case 1:
                         Console.WriteLine("Vous avez choisi : le type Guerrier");
                         choisi = true;
+                        classe = 0;
                         break;
                     case 2:
                         Console.WriteLine("Vous avez choisi : le type Roublard");
                         choisi = true;
+                        classe = 1;
                         break;
                     case 3:
                         Console.WriteLine("Vous avez choisi : le type Magicien");
                         choisi = true;
+                        classe = 2;
                         break;
                     default:
                         Console.WriteLine("Option invalide, veuillez choisir à nouveau!");
@@ -370,7 +373,7 @@ namespace LaboFinal_A22
             int choixUtilisateur = 0;
 
             Console.WriteLine("Bienvenue dans le jeu wannabe Zork. \nZork a été ressucité! Tous les aventuriers sont sollicités pour débarasser Azerim de cette menace!");
-            Console.WriteLine("Que voulez-vous faire? : \n 1. Jouer\n2.Quitter ");
+            Console.WriteLine("Que voulez-vous faire? : \n1. Jouer\n2. Quitter ");  
             int.TryParse(Console.ReadLine(), out choixUtilisateur);
 
             return choixUtilisateur;
@@ -383,7 +386,7 @@ namespace LaboFinal_A22
         public int afficherMenuFin()
         {
             int choixUtilisateur = 0;
-            Console.WriteLine("Vous avez fini ! Que voulez-vous faire maintenant? :\n1. Rejouer\n2.Quitter");
+            Console.WriteLine("Vous avez fini\nQue voulez-vous faire maintenant? :\n1.Rejouer\n2.Quitter");
             int.TryParse(Console.ReadLine(), out choixUtilisateur);
 
             return choixUtilisateur;

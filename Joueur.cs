@@ -51,7 +51,7 @@ namespace LaboFinal_A22
         public string enumererActions()
         {
             string actions = "Attaquer";
-            if (this.habilete.tour <= 0)
+            if (this.habilete.tour == 0)
             {
                 actions += "," + this.habilete.nom;
             }

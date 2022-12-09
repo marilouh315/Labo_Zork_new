@@ -82,32 +82,33 @@ namespace LaboFinal_A22
             // Transformer la ligne en tableau de string, en utilisant la virgule comme séparateur
 
             string ligne = lecture.ReadLine();
-            string[] texte = ligne.Split(',');
+            string [] texte = ligne.Split(',');
             lecture.Close();
 
-            int[] stats = new int[6];
 
-            for (int i = 0; i < nom.Length - 1; i++)
+            int[] stats = new int[texte.Length];
+
+            for (int i = 0; i < texte.Length - 1; i++)
             {
-                int.TryParse(texte[i + 1], out stats[i]);
+                int.TryParse(texte[i], out stats[i]);
             }
 
             // utiliser le tableau afin d'obtenir les informations désirées pour utiliser le constructeur de la classe Joueur
             // et finir de créer l'instance du joueur avec ces informations
             // ne pas oublier d'assigner l'habilete au joueur selon le id après la construction
-            joueur = new Joueur(nom, stats[0], stats[1], stats[2], stats[3], stats[4], habiletes [0]);
+            joueur = new Joueur(nom, stats[1], stats[2], stats[3], stats[4], stats[5], habiletes[0]);
 
             if (habiletes[0].id == stats[5])
             {
-                joueur = new Joueur(nom, stats[0], stats[1], stats[2], stats[3], stats[4], habiletes[0]);
+                joueur = new Joueur(nom, stats[1], stats[2], stats[3], stats[4], stats[5], habiletes[0]);
             }
             else if (habiletes[1].id == stats[5])
             {
-                joueur = new Joueur(nom, stats[0], stats[1], stats[2], stats[3], stats[4], habiletes[1]);
+                joueur = new Joueur(nom, stats[1], stats[2], stats[3], stats[4], stats[5], habiletes[1]);
             }
             else if (habiletes[2].id == stats[5])
             {
-                joueur = new Joueur(nom, stats[0], stats[1], stats[2], stats[3], stats[4], habiletes[2]);
+                joueur = new Joueur(nom, stats[1], stats[2], stats[3], stats[4], stats[5], habiletes[2]);
             }
 
             // retourner le joueur configuré
